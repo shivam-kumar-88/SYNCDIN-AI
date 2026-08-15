@@ -118,7 +118,7 @@ npm run dev
 
 The backend runs on:
 
-- http://localhost:8000
+- https://syncdin-ai.onrender.com
 
 ### Start the frontend
 

@@ -34,7 +34,7 @@ const [running, setRunning] = useState(false);
       setLoading(true);
 
       const res = await axios.post(
-        "http://localhost:8000/coding-practice",
+        `${import.meta.env.VITE_API_URL}/YOUR_ENDPOINT`,
         {
           role,
           difficulty,
@@ -71,7 +71,7 @@ console.log(question);
     setSolving(true);
 
     const res = await axios.post(
-      "http://localhost:8000/solve-question",
+      `${import.meta.env.VITE_API_URL}/YOUR_ENDPOINT`,
       {
         question: question.question,
         language,
@@ -98,7 +98,7 @@ const runCode = async () => {
     setRunning(true);
 
     const res = await axios.post(
-      "http://localhost:8000/run-code",
+      `${import.meta.env.VITE_API_URL}/YOUR_ENDPOINT`,
       {
         language,
         code,

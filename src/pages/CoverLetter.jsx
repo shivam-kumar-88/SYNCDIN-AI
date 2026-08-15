@@ -41,7 +41,7 @@ export default function CoverLetter() {
       setError("");
 
       const response = await axios.post(
-        "http://localhost:8000/cover-letter",
+        `${import.meta.env.VITE_API_URL}/YOUR_ENDPOINT`,
         formData
       );
 

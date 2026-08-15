@@ -32,7 +32,7 @@ export default function Interview() {
       setFeedback({});
 
       const response = await axios.post(
-        "http://127.0.0.1:8000/interview",
+        `${import.meta.env.VITE_API_URL}/interview`,
         {
           jobRole,
           experience,
@@ -88,7 +88,7 @@ export default function Interview() {
       setError("");
 
       const response = await axios.post(
-        "http://127.0.0.1:8000/evaluate-answer",
+        `${import.meta.env.VITE_API_URL}/YOUR_ENDPOINT`,
         {
           question,
           answer,
