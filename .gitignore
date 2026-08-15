@@ -1,0 +1,59 @@
+# Dependencies
+node_modules/
+**/node_modules/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Build output
+/dist/
+/dist-ssr/
+/build/
+/build-*/
+/.vite/
+/.cache/
+/.parcel-cache/
+/coverage/
+
+# Environment files
+.env
+.env.*
+!.env.example
+**/.env
+**/.env.*
+
+# Runtime and uploaded files
+/uploads/
+/server/uploads/
+**/uploads/
+*.pdf
+*.docx
+*.doc
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.webp
+
+# Local dev / IDE files
+.vscode/
+!.vscode/extensions.json
+.idea/
+*.swp
+*.swo
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.DS_Store
+Thumbs.db
+
+# Misc local config
+*.local
