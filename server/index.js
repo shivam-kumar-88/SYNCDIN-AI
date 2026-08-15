@@ -12,15 +12,12 @@ if (!fs.existsSync(uploadDir)) {
   fs.mkdirSync(uploadDir, { recursive: true });
 }
 
-// ================= Gemini AI =================
+// ================= Groq AI =================
 const Groq = require("groq-sdk");
 
 const groq = new Groq({
   apiKey: process.env.GROQ_API_KEY,
 });
-
-
-// ================= Express =================
 
 const app = express();
 
@@ -28,12 +25,6 @@ app.use(cors());
 app.use(express.json());
 
 // ================= Multer =================
-
-const uploadDir = path.join(__dirname, "uploads");
-
-if (!fs.existsSync(uploadDir)) {
-  fs.mkdirSync(uploadDir, { recursive: true });
-}
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
