@@ -11,6 +11,7 @@ export default function Signup() {
 
   const handleSignup = (e) => {
     e.preventDefault();
+
     setError("");
 
     if (!name || !email || !password) {
@@ -28,32 +29,25 @@ export default function Signup() {
       return;
     }
 
-    const existingUser = JSON.parse(
-      localStorage.getItem("syncdInUser")
-    );
-
-    if (existingUser && existingUser.email === email) {
-      setError("Account already exists. Please login.");
-      return;
-    }
-
     const user = {
       name,
       email,
       password,
     };
 
-    localStorage.setItem("syncdInUser", JSON.stringify(user));
+    // Save account
+    localStorage.setItem("userAccount", JSON.stringify(user));
 
-    alert("Account created successfully! 🎉");
+    alert("✅ Account created successfully!");
 
+    // Go to login
     navigate("/login");
   };
 
   return (
     <div className="min-h-screen bg-black flex items-center justify-center px-6">
 
-      <div className="bg-[#111827] p-10 rounded-3xl w-full max-w-md border border-gray-700">
+      <div className="bg-gray-900 p-10 rounded-2xl w-full max-w-md border border-gray-800">
 
         <h1 className="text-4xl font-bold text-white text-center">
           Create Account 🚀
@@ -76,7 +70,7 @@ export default function Signup() {
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder="Enter your full name"
-              className="w-full mt-2 p-4 rounded-xl bg-[#0b1120] border border-gray-700 text-white outline-none focus:border-blue-500"
+              className="w-full mt-2 p-3 rounded-lg bg-gray-800 text-white outline-none"
             />
           </div>
 
@@ -91,7 +85,7 @@ export default function Signup() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your email"
-              className="w-full mt-2 p-4 rounded-xl bg-[#0b1120] border border-gray-700 text-white outline-none focus:border-blue-500"
+              className="w-full mt-2 p-3 rounded-lg bg-gray-800 text-white outline-none"
             />
           </div>
 
@@ -106,7 +100,7 @@ export default function Signup() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Create password"
-              className="w-full mt-2 p-4 rounded-xl bg-[#0b1120] border border-gray-700 text-white outline-none focus:border-blue-500"
+              className="w-full mt-2 p-3 rounded-lg bg-gray-800 text-white outline-none"
             />
           </div>
 
@@ -117,19 +111,18 @@ export default function Signup() {
             </p>
           )}
 
-          {/* Signup */}
+          {/* Create Account */}
           <button
             type="submit"
-            className="w-full bg-blue-600 hover:bg-blue-700 mt-8 py-4 rounded-xl text-white font-semibold text-lg transition"
+            className="w-full bg-blue-600 hover:bg-blue-700 mt-8 py-3 rounded-lg text-white font-semibold"
           >
-            Create Account 🚀
+            Create Account
           </button>
 
         </form>
 
         <p className="text-gray-400 text-center mt-6">
           Already have an account?{" "}
-
           <Link
             to="/login"
             className="text-blue-500 hover:underline"

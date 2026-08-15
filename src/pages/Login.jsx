@@ -10,51 +10,35 @@ export default function Login() {
   const [error, setError] = useState("");
 
   const handleLogin = (e) => {
-    e.preventDefault();
-    setError("");
+  e.preventDefault();
 
-    if (!email || !password) {
-      setError("Please enter email and password.");
-      return;
-    }
+  setError("");
 
-    if (!email.includes("@")) {
-      setError("Please enter a valid email.");
-      return;
-    }
+  if (!email || !password) {
+    setError("Please enter email and password.");
+    return;
+  }
 
-    if (password.length < 6) {
-      setError("Password must be at least 6 characters.");
-      return;
-    }
+  const savedUser = localStorage.getItem("userAccount");
 
-    // Get registered user
-    const savedUser = localStorage.getItem("user");
+  if (!savedUser) {
+    setError("No account found. Please create an account first.");
+    return;
+  }
 
-    if (!savedUser) {
-      setError("No account found. Please create an account first.");
-      return;
-    }
+  const user = JSON.parse(savedUser);
 
-    const user = JSON.parse(savedUser);
+  if (email !== user.email || password !== user.password) {
+    setError("Invalid email or password.");
+    return;
+  }
 
-    // Check email and password
-    if (
-      user.email !== email ||
-      user.password !== password
-    ) {
-      setError("Incorrect email or password.");
-      return;
-    }
+  localStorage.setItem("isLoggedIn", "true");
+  localStorage.setItem("userEmail", user.email);
+  localStorage.setItem("userName", user.name);
 
-    // Login successful
-    localStorage.setItem("isLoggedIn", "true");
-    localStorage.setItem("userEmail", user.email);
-
-    alert("Login Successful ✅");
-
-    navigate("/dashboard");
-  };
+  navigate("/dashboard");
+};
 
   return (
     <div className="min-h-screen bg-black flex items-center justify-center px-6">
